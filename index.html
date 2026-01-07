@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ShopEase | Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="logo" href="index.html">
+    <i class="fa-solid fa-store"></i> Shopily
+  </a>
+
+  <div class="nav-right">
+    <a href="products.html">
+      <i class="fa-solid fa-box"></i> Products
+    </a>
+
+    <a href="cart.html">
+      <i class="fa-solid fa-cart-shopping"></i>
+      Cart (<span id="cart-count">0</span>)
+    </a>
+
+    <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Shop Easy. Shop Happily.</h1>
+  <p>Modern products with a smooth shopping experience</p>
+  <a href="products.html" class="btn">
+    <i class="fa-solid fa-arrow-right"></i> Browse Products
+  </a>
+</section>
+
+<!-- AUTO SCROLLER -->
+<section class="scroller-section">
+  <h2 class="scroller-title">
+    <i class="fa-solid fa-store"></i> What We Offer
+  </h2>
+
+  <div class="scroller-wrapper">
+    <div class="scroller">
+      <div class="scroller-card"><i class="fa-solid fa-laptop"></i><p>Devices</p></div>
+      <div class="scroller-card"><i class="fa-solid fa-headphones"></i><p>Accessories</p></div>
+      <div class="scroller-card"><i class="fa-solid fa-gamepad"></i><p>Gaming</p></div>
+      <div class="scroller-card"><i class="fa-solid fa-robot"></i><p>Toys</p></div>
+      <div class="scroller-card"><i class="fa-solid fa-clock"></i><p>Wearables</p></div>
+
+
+      <!-- duplicate for loop -->
+      <div class="scroller-card"><i class="fa-solid fa-laptop"></i><p>Devices</p></div>
+      <div class="scroller-card"><i class="fa-solid fa-headphones"></i><p>Accessories</p></div>
+      <div class="scroller-card"><i class="fa-solid fa-gamepad"></i><p>Gaming</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCOUNTS -->
+<section class="discount-section">
+  <h2 class="discount-title">
+    <i class="fa-solid fa-tags"></i> Hot Deals
+  </h2>
+
+  <div class="carousel-wrapper">
+    <button class="carousel-btn left" onclick="scrollCarousel('discount-carousel', -1)">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <div class="carousel" id="discount-carousel"></div>
+
+    <button class="carousel-btn right" onclick="scrollCarousel('discount-carousel', 1)">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+</section>
+
+
+<!-- TOP SELLING PRODUCTS -->
+<section class="top-selling-section">
+  <h2 class="top-selling-title">
+    <i class="fa-solid fa-fire"></i> Top Selling
+  </h2>
+
+  <div class="carousel-wrapper">
+    <button class="carousel-btn left" onclick="scrollCarousel('top-selling-carousel', -1)">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <div class="carousel" id="top-selling-carousel"></div>
+
+    <button class="carousel-btn right" onclick="scrollCarousel('top-selling-carousel', 1)">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+</section>
+
+
+<footer class="main-footer">
+  <div class="footer-content">
+
+    <!-- ABOUT US -->
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <p>
+        Shopily is a modern e-commerce platform focused on providing
+        quality products with a smooth and user-friendly shopping experience.
+      </p>
+    </div>
+
+    <!-- CUSTOMER SUPPORT -->
+    <div class="footer-section">
+      <h3>Customer Support</h3>
+      <ul>
+        <li>Help Center</li>
+        <li>FAQs</li>
+        <li>Shipping & Returns</li>
+        <li>Contact Us</li>
+      </ul>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-section find-us">
+  <h3>Find Us</h3>
+
+  <div class="social-icons">
+    <a href="#" aria-label="Facebook">
+      <i class="fa-brands fa-facebook-f"></i>
+    </a>
+    <a href="#" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="#" aria-label="Pinterest">
+      <i class="fa-brands fa-pinterest-p"></i>
+    </a>
+    <a href="#" aria-label="YouTube">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+  </div>
+</div>
+
+
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 ShopEase. All rights reserved.
+  </div>
+</footer>
+
+
+<button id="scrollTopBtn" onclick="scrollToTop()">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+  const discountCarousel = document.getElementById("discount-carousel");
+
+  discountedProducts.forEach(d => {
+    const p = products.find(prod => prod.id === d.productId);
+    if (!p) return;
+
+    const saved = d.originalPrice - d.discountedPrice;
+
+    discountCarousel.innerHTML += `
+      <div class="discount-card">
+        <img src="${p.image}" alt="${p.name}">
+
+        <p class="discount-name">
+          <a href="product.html?id=${p.id}">${p.name}</a>
+        </p>
+
+        <div class="price-line">
+          <span class="old-price">₱${d.originalPrice}</span>
+          <span class="discount-price">₱${d.discountedPrice}</span>
+        </div>
+
+        <p class="discount-saved">Save ₱${saved}</p>
+      </div>
+    `;
+  });
+</script>
+
+<script>
+  const topSellingCarousel = document.getElementById("top-selling-carousel");
+
+  topSellingProducts.forEach(t => {
+    const p = products.find(prod => prod.id === t.productId);
+    if (!p) return;
+
+    topSellingCarousel.innerHTML += `
+      <div class="top-selling-card">
+        <img src="${p.image}" alt="${p.name}">
+
+        <p class="top-selling-name">
+          <a href="product.html?id=${p.id}">${p.name}</a>
+        </p>
+
+        <p class="top-selling-price">₱${p.price}</p>
+      </div>
+    `;
+  });
+</script>
+
+<script>
+  function scrollCarousel(id, direction) {
+    const carousel = document.getElementById(id);
+    const cardWidth = carousel.querySelector("div").offsetWidth + 24;
+    carousel.scrollLeft += direction * cardWidth * 2;
+  }
+</script>
+
+
+
+
+</body>
+</html>

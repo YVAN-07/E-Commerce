@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products | Shopily</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="logo" href="index.html"><i class="fa-solid fa-store"></i> Shopily</a>
+
+  <div class="nav-right">
+    <a href="products.html"><i class="fa-solid fa-box"></i> Products</a>
+    <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart (<span id="cart-count">0</span>)</a>
+    <button id="themeToggle" class="theme-btn"><i class="fa-solid fa-moon"></i></button>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a> / <span id="breadcrumb-current">Products</span>
+</div>
+
+<div class="container">
+  <div class="category-bar">
+    <button onclick="filterCategory('All')">All</button>
+    <button onclick="filterCategory('Accessories')">Accessories</button>
+    <button onclick="filterCategory('Gaming')">Gaming</button>
+    <button onclick="filterCategory('Wearables')">Wearables</button>
+  </div>
+
+  <div class="divider"></div>
+  <div class="product-grid product-page-grid" id="product-list"></div>
+</div>
+
+<button id="scrollTopBtn" onclick="scrollToTop()">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/products.js"></script>
+
+</body>
+</html>
